@@ -1,0 +1,693 @@
+/*
+ * ImageEditor - Developed by xen (206993987125510144)
+ * Apple Dark Glassmorphism Stylesheet
+ */
+
+.xen-modal-root,
+.xen-editor-modal,
+.xen-editor-modal * {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.xen-modal-root {
+    max-width: 95vw !important;
+    width: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.xen-editor-modal {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    max-width: 1200px;
+    height: 85vh;
+    max-height: 900px;
+    background: rgba(18, 19, 23, 0.95);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    color: #F0F0F3;
+    user-select: none;
+}
+
+/* --- HEADER --- */
+.xen-editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(26, 28, 34, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.xen-editor-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.xen-editor-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: #FFFFFF;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 0 24px rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xen-editor-author-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.xen-editor-dimensions {
+    font-size: 12px;
+    font-family: "SF Mono", Consolas, monospace;
+    color: rgba(255, 255, 255, 0.45);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.xen-editor-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- BODY & LAYOUT --- */
+.xen-editor-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- TOOLBAR (LEFT) --- */
+.xen-editor-sidebar {
+    width: 64px;
+    background: rgba(22, 23, 28, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.xen-tool-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xen-tool-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.xen-tool-button:hover .xen-tool-icon {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.xen-tool-button.active {
+    background: rgba(255, 255, 255, 0.22);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.35), inset 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+.xen-tool-button.active .xen-tool-icon {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.xen-tool-button.active .xen-tool-label {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+}
+
+.xen-tool-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.xen-tool-label {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+}
+
+.xen-tool-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+}
+
+/* --- MAIN WORKSPACE --- */
+.xen-editor-workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background: #0d0e11;
+}
+
+/* --- SECONDARY TOOL OPTIONS BAR --- */
+.xen-editor-options-bar {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(24, 26, 32, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    gap: 16px;
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+.xen-option-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xen-option-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.xen-color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.xen-color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.xen-color-swatch.active {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.xen-option-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+    user-select: none;
+}
+
+.xen-option-btn {
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.xen-option-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.xen-option-btn.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #FFFFFF;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.35);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.85);
+}
+
+.xen-input-text {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    font-size: 12px;
+    outline: none;
+    transition: border 0.15s ease;
+}
+
+.xen-input-text:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- CANVAS VIEWPORT --- */
+.xen-editor-viewport {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    background-image: 
+        linear-gradient(45deg, #131418 25%, transparent 25%), 
+        linear-gradient(-45deg, #131418 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #131418 75%), 
+        linear-gradient(-45deg, transparent 75%, #131418 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #0b0c0f;
+}
+
+.xen-canvas-container {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.xen-main-canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.xen-overlay-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    cursor: crosshair;
+}
+
+/* --- FOOTER --- */
+.xen-editor-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(20, 21, 26, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.xen-editor-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.xen-editor-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.xen-btn-secondary {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.xen-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.xen-btn-primary {
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: #FFFFFF;
+    color: #0A0A0D;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+}
+
+.xen-btn-primary:hover {
+    background: #E8E8EC;
+    border-color: #FFFFFF;
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.65), 0 6px 18px rgba(0, 0, 0, 0.7);
+    transform: translateY(-1px);
+}
+
+.xen-toast-banner {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 22, 28, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), 0 0 22px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    animation: xenFadeIn 0.2s ease-out;
+}
+
+@keyframes xenFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -8px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* --- EMPTY / UPLOAD DROPZONE --- */
+.xen-upload-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 540px;
+    padding: 48px 32px;
+    background: rgba(22, 24, 30, 0.7);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.xen-upload-dropzone:hover, .xen-upload-dropzone.drag-active {
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(30, 34, 44, 0.85);
+    box-shadow: 0 0 28px rgba(255, 255, 255, 0.12), 0 16px 40px rgba(0, 0, 0, 0.6);
+    transform: scale(1.02);
+}
+
+.xen-upload-icon {
+    font-size: 36px;
+    color: #FFFFFF;
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
+    margin-bottom: 12px;
+}
+
+.xen-upload-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.xen-upload-subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.xen-upload-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- RECIPIENT SELECTOR POPOUT --- */
+.xen-recipient-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.xen-recipient-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xen-recipient-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.xen-recipient-popout {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    width: 300px;
+    max-height: 380px;
+    background: rgba(20, 22, 28, 0.98);
+    backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1200;
+    animation: xenFadeIn 0.18s ease-out;
+}
+
+.xen-recipient-header {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.xen-recipient-search {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 7px 12px;
+    color: #FFFFFF;
+    font-size: 12px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.xen-recipient-search:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.xen-recipient-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px;
+    max-height: 280px;
+}
+
+.xen-recipient-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 6px 10px 4px 10px;
+}
+
+.xen-recipient-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+.xen-recipient-item:hover {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.xen-recipient-item.active {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.xen-recipient-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.xen-recipient-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+}
+
+.xen-recipient-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.xen-recipient-username {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- FOOTER CONTROLS (SPOILER & REPLY) --- */
+.xen-footer-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease;
+}
+
+.xen-footer-checkbox:hover {
+    color: #FFFFFF;
+}
+
+.xen-footer-checkbox input[type="checkbox"] {
+    accent-color: #FFFFFF;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+
+/* --- LUXURY SLIDER (APPLE MONOCHROME) --- */
+.xen-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    outline: none;
+    transition: background 0.15s ease;
+    cursor: pointer;
+}
+
+.xen-slider:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.xen-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.12s ease;
+}
+
+.xen-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.xen-slider-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2px 7px;
+    border-radius: 6px;
+    min-width: 28px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    letter-spacing: 0.2px;
+}
